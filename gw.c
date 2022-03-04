@@ -24,7 +24,7 @@ int check_word(char word[256], char input[8], char mask[8]) {
     }
   }
   // loop each letter of the word
-  for (i = 0; i < strlen(word)-1; i++) {
+  for (i = 0; i < m; i++) {
     // compare input letters to current letter, if matched remove that letter to prevent dupes.
     for (j = 0; j < strlen(internal_input); j++) {
       if ( word[i] == internal_input[j] ) {
@@ -39,11 +39,13 @@ int check_word(char word[256], char input[8], char mask[8]) {
     if ( n == m ) {
       for (k = 0; k < strlen(mask); k++) {
         if ( mask[k] != 46 && mask[k] == word[k] ) {
+          //printf("%s y = %d z = %d  k = %d\n", word, y, z, k);
           y++;
         }
       }
+      //printf("y = %d z = %d\n", y, z);
       if ( y == z ) {
-        // the mask matches return the word, print it. 
+        // the mask matches return the word, print it.
         return 1;
       }
     }
