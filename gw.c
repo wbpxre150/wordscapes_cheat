@@ -61,7 +61,7 @@ int main(int argc, char const *argv[]) {
     strcpy(input, argv[1]);
     strcpy(mask, argv[2]);
   } else {
-    printf("Need to enter letters and mask in format:\n ./gw xxxxxxx .......\n");
+    printf("Need to enter letters and mask in format:\n ./gw xxxxxxx ....... <1>\n");
     return 0;
   }
   printf("Input Letters: %s\n", input);
