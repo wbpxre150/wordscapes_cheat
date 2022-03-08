@@ -67,11 +67,11 @@ int main(int argc, char const *argv[]) {
   printf("Input Letters: %s\n", input);
 
   // load words file
-  FILE* words;
-  words = fopen("words", "r");
+  FILE* words1;
+  words1 = fopen("words", "r");
 
   // loop over words one at a time.
-  while (fgets(buffer, 256, words) != NULL) {
+  while (fgets(buffer, 256, words1) != NULL) {
     if (check_word(buffer, input, mask) == 1)
       printf("%s", buffer);
   }
@@ -85,5 +85,6 @@ int main(int argc, char const *argv[]) {
         printf("%s", buffer);
     }
   }
+
   return 0;
 };
