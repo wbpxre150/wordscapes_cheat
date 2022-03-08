@@ -76,5 +76,14 @@ int main(int argc, char const *argv[]) {
       printf("%s", buffer);
   }
 
+  // if specified for longer search search longer word list.
+  if ( argv[3] != NULL ) {
+    FILE* words2;
+    words2 = fopen("words.old", "r");
+    while (fgets(buffer, 256, words2) != NULL) {
+      if (check_word(buffer, input, mask) == 1)
+        printf("%s", buffer);
+    }
+  }
   return 0;
 };
