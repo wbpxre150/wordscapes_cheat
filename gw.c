@@ -57,11 +57,11 @@ int check_word(char word[256], char input[8], char mask[8]) {
 int main(int argc, char const *argv[]) {
   // get letters from command line and print them
   char input[8], mask[8], buffer [256];
-  if ( argv[1] != NULL && argv[2] != NULL ) {
+  if ( argv[1] != NULL && argv[2] != NULL && strlen(argv[1]) < 8 && strlen(argv[2]) < 8 ) {
     strcpy(input, argv[1]);
     strcpy(mask, argv[2]);
   } else {
-    printf("Need to enter letters and mask in format:\n ./gw xxxx ....\n");
+    printf("Need to enter letters and mask in format:\n ./gw xxxxxxx .......\n");
     return 0;
   }
   printf("Input Letters: %s\n", input);
