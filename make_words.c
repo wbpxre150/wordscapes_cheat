@@ -7,12 +7,12 @@ int main(int argc, char const *argv[]) {
   FILE* words;
   FILE* new_words;
   words = fopen("all_words", "r");
-  new_words = fopen("words", "w");
+  new_words = fopen("words.new", "w");
 
   // loop over words one at a time.
   while (fgets(buffer, 256, words) != NULL) {
     // words between length 3 and 7 letters long inclusive.
-    if ( strlen(buffer) > 9 || strlen(buffer) < 5 ) {
+    if ( strlen(buffer) > 8 || strlen(buffer) < 4 ) {
       continue;
     } else {
       // convert uppercase to lower case.

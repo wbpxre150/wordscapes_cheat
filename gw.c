@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define YEL "\e[0;33m"
+#define BLU "\e[0;34m"
+#define MAG "\e[0;35m"
+#define CYN "\e[0;36m"
+#define WHT "\e[0;37m"
+#define reset "\e[0m"
+
 int check_word(char word[256], char input[8], char mask[8]) {
   int i = 0 ,j = 0,n = 0,m = 0, z = 0, y = 0, k = 0;
   char internal_input[8];
@@ -53,10 +62,20 @@ int check_word(char word[256], char input[8], char mask[8]) {
   return 0;
 }
 
+void print_word(char word[256], int c) {
+  if ( c == 0 ) printf(RED"%s"reset, word);
+  if ( c == 1 ) printf(GRN"%s"reset, word);
+  if ( c == 2 ) printf(BLU"%s"reset, word);
+  if ( c == 3 ) printf(YEL"%s"reset, word);
+  if ( c == 4 ) printf(MAG"%s"reset, word);
+  if ( c == 5 ) printf(CYN"%s"reset, word);
+  if ( c == 6 ) printf(WHT"%s"reset, word);
+}
 
 int main(int argc, char const *argv[]) {
   // get letters from command line and print them
   char input[8], mask[8], buffer [256];
+  int c = 0;
   if ( argv[1] != NULL && argv[2] != NULL && strlen(argv[1]) < 8 && strlen(argv[2]) < 8 ) {
     strcpy(input, argv[1]);
     strcpy(mask, argv[2]);
@@ -66,23 +85,28 @@ int main(int argc, char const *argv[]) {
   }
   printf("Input Letters: %s\n", input);
 
-  // load words file
-  FILE* words1;
-  words1 = fopen("words", "r");
-
-  // loop over words one at a time.
-  while (fgets(buffer, 256, words1) != NULL) {
-    if (check_word(buffer, input, mask) == 1)
-      printf("%s", buffer);
-  }
-
-  // if specified for longer search search longer word list.
   if ( argv[3] != NULL ) {
     FILE* words2;
     words2 = fopen("words.old", "r");
     while (fgets(buffer, 256, words2) != NULL) {
-      if (check_word(buffer, input, mask) == 1)
-        printf("%s", buffer);
+      if (check_word(buffer, input, mask) == 1) {
+        //printf("%s", buffer);
+        if ( c == 7 ) c = 0;
+        print_word(buffer,c);
+        c++;
+      }
+    }
+  } else {
+    // load words file
+    FILE* words1;
+    words1 = fopen("words", "r");
+    while (fgets(buffer, 256, words1) != NULL) {
+      if (check_word(buffer, input, mask) == 1) {
+        // printf("%s", buffer);
+        if ( c == 7 ) c = 0;
+        print_word(buffer,c);
+        c++;
+     }
     }
   }
 
