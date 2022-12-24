@@ -14,7 +14,7 @@ int check_word(char word[256], char input[8], char mask[8]) {
   int i = 0 ,j = 0,n = 0,m = 0, z = 0, y = 0, k = 0;
   char internal_input[8];
   strcpy(internal_input, input);
-  m = strlen(word)-2;
+  m = strlen(word)-1;
   //printf("%s      %s", internal_input, word);
   // if word contains more letters than input string we cannot build it from the input letters.
   if (m > strlen(input)) {
