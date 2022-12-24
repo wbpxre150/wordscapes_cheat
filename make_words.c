@@ -18,7 +18,6 @@ int main(int argc, char const *argv[]) {
     }
     
     // loop over new_words file 
-    //printf("%s", buffer);
     new_words = fopen("words", "r");
     while (fgets(buffer2, 256, new_words) != NULL) { 
       // if the word is already there skip it
