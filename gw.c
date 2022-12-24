@@ -80,35 +80,20 @@ int main(int argc, char const *argv[]) {
     strcpy(input, argv[1]);
     strcpy(mask, argv[2]);
   } else {
-    printf("Need to enter letters and mask in format:\n ./gw xxxxxxx ....... <1>\n");
+    printf("Need to enter letters and mask in format:\n ./gw xxxxxxx .......\n");
     return 0;
   }
   printf("Input Letters: %s\n", input);
-
-  if ( argv[3] != NULL ) {
-    FILE* words2;
-    words2 = fopen("words.old", "r");
-    while (fgets(buffer, 256, words2) != NULL) {
-      if (check_word(buffer, input, mask) == 1) {
-        //printf("%s", buffer);
-        if ( c == 7 ) c = 0;
-        print_word(buffer,c);
-        c++;
-      }
-    }
-  } else {
-    // load words file
-    FILE* words1;
-    words1 = fopen("words", "r");
-    while (fgets(buffer, 256, words1) != NULL) {
-      if (check_word(buffer, input, mask) == 1) {
-        // printf("%s", buffer);
-        if ( c == 7 ) c = 0;
-        print_word(buffer,c);
-        c++;
-     }
+  // load words file
+  FILE* words;
+  words = fopen("words", "r");
+  while (fgets(buffer, 256, words) != NULL) {
+    if (check_word(buffer, input, mask) == 1) {
+      // printf("%s", buffer);
+      if ( c == 7 ) c = 0;
+      print_word(buffer,c);
+      c++;
     }
   }
-
   return 0;
 };

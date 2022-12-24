@@ -13,7 +13,7 @@ Run like this to output all words that may fit:
 
 `./gw xxxxxxx ...... <1>`
 
-In the above example the `x` represents the letters of the level you are cheating on, and the `.` represent the letters you have as clues if any. For 7 letter words enter seven `.` for a 5 letter word enter 5 etc. Simply replace a `.` with each letter you have and hit enter. The program will search the words file for any matches and print them out. It is an instant result even on a mobile phone running in Termux. The `<1>` means an exhaustive search, if no word is found add `1` to the command line to search a longer word list. 
+In the above example the `x` represents the letters of the level you are cheating on, and the `.` represent the letters you have as clues if any. For 7 letter words enter seven `.` for a 5 letter word enter 5 etc. Simply replace a `.` with each letter you have and hit enter. The program will search the words file for any matches and print them out. It is an instant result even on a mobile phone running in Termux. 
 
 ## Running on Termux on your phone. 
 
